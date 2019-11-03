@@ -1,0 +1,15 @@
+--- #The MEAN Stack file
+- hosts: nodes
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  vars: 
+    var_node: /tmp
+  tasks:
+    # Install Prerequisites
+    - include: tasks/prerequisites.yaml
+    # Install MongoDB
+    - include: tasks/mongodb.yaml
+    # Install Node.js
+    - include: tasks/nodejs.yaml
+

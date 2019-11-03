@@ -1,0 +1,22 @@
+# The Nodejs Playbook
+- name: Node.js | Get Script
+  get_url: 
+    url: "http://deb.nodesource.com/setup_6.x"
+    dest: " {{ var_node }}/nodejs.sh"
+
+- name: Node.js | Set Execution permission to script
+  file: 
+    path: "{{ var_node }}/nodejs.sh"
+    mode: "u+x"
+
+- name: Node.js | Install Node.js
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+    - build-essential
+    - nodejs
+
+- name: Node.js | Install bower and gulp globally
+  npm: name={{ item }} state=present global=yes
+  with_items: 
+    - bower
+    - gulp
