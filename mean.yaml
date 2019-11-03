@@ -7,9 +7,9 @@
     var_node: /tmp
   tasks:
     # Install Prerequisites
-    - include: tasks/prerequisites.yaml
+    - include: tasks/prerequisites.yaml color=green
     # Install MongoDB
-    - include: tasks/mongodb.yaml
+    - include: tasks/mongodb.yaml color=yellow
     # Install Node.js
-    - include: tasks/nodejs.yaml
+    - include: tasks/nodejs.yaml color=blue
 
