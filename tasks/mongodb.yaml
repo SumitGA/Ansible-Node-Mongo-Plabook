@@ -13,11 +13,11 @@
 
 - name: MongoDB | Install MongoDB
   apt: 
-    name: mongodb
+    name: mongodb-server
     state: present
     update_cache: yes
 
 - name: MongoDB | Running State
   service:
-    name: mongod
+    name: mongo
     state: started

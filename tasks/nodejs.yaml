@@ -2,12 +2,20 @@
 - name: Node.js | Get Script
   get_url: 
     url: "http://deb.nodesource.com/setup_6.x"
-    dest: " {{ var_node }}/nodejs.sh"
+    dest: "{{ var_node }}/nodejs.sh"
 
 - name: Node.js | Set Execution permission to script
   file: 
     path: "{{ var_node }}/nodejs.sh"
     mode: "u+x"
+
+- name: Node.js | Execute Installation script
+  shell: "{{ var_node }}/nodejs.sh"
+
+- name: Node.js | Remove Installation script
+  file: 
+    path: "{{ var_node }}/nodejs.sh"
+    state: absent
 
 - name: Node.js | Install Node.js
   apt: name={{ item }} state=present update_cache=yes
